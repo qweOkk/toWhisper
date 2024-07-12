@@ -1,8 +1,8 @@
-PROGRAM = toWhisper
+PROGRAM = libtoWhisper.so
 OBJS = vector.o wave.o toWhisper.o
 CC = gcc
-CFLAGS = -Wall -O3 -std=gnu11
-LDFLAGS=-lm
+CFLAGS = -Wall -O3 -std=gnu11 -fPIC
+LDFLAGS = -shared -lm
 
 .SUFFIXES: .o .c
 
@@ -14,4 +14,4 @@ $(PROGRAM): $(OBJS)
 
 .PHONY: clean
 clean:
-	$(RM) $(PROGRAM) $(OBJS) $(LDFLAGS)
+	$(RM) $(PROGRAM) $(OBJS)

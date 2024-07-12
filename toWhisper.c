@@ -40,9 +40,9 @@ enum {
     BLACKMAN,
     OTHER,
 } windowType = HAMMING;
-
 int main(int argc, char* argv[])
-{
+{   
+    inputFile = NULL, outputFile = NULL, eFile = NULL;
     if (initMain(argc, argv) != 0) return -1;
 
     WAVE *src = readWave(inputFile);
@@ -156,7 +156,6 @@ int main(int argc, char* argv[])
     //デエンファシス
     for (int i=1; i<length; i++) v1->elem[i] = lpf*v1->elem[i-1] + v1->elem[i];
     for (int i=1; i<length; i++) v2->elem[i] = 0.97*v2->elem[i-1] + v2->elem[i];
-
     moveSet(src, v1, L);
     writeWave(src, outputFile);
 
@@ -169,6 +168,7 @@ int main(int argc, char* argv[])
     free(a);
     freeVector(v);
     freeWave(src);
+    return 0;
 }
 
 // 自己相関関数

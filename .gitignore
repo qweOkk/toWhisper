@@ -2,3 +2,5 @@
 *.o
 toWhisper
 *.wav
+CMakeLists.txt
+libtoWhisper.so
